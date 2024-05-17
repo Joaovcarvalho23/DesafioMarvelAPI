@@ -31,3 +31,7 @@ body {
     text-wrap: balance;
   }
 }
+
+.container {
+  @apply max-w-7xl mx-auto
+}
