@@ -1,17 +1,17 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { Personagem } from '@/types/marvel_types';
-import Link from 'next/link';
+import * as React from 'react'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardMedia from '@mui/material/CardMedia'
+import Typography from '@mui/material/Typography'
+import { Personagem } from '@/types/marvel_types'
+import Link from 'next/link'
 
 interface CardPersonagemProps {
     personagem: Personagem
 }
 
 const CardPersonagem: React.FC<CardPersonagemProps> = ({ personagem }) => {
-    console.log(personagem);
+    console.log(personagem)
     return (
         <Link href={`informacoes_personagem/${personagem.id}`} passHref>
             <Card
@@ -44,7 +44,7 @@ const CardPersonagem: React.FC<CardPersonagemProps> = ({ personagem }) => {
                 </CardContent>
             </Card>
         </Link>
-    );
+    )
 }
 
-export default CardPersonagem;
+export default CardPersonagem

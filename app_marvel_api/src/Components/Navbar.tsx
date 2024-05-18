@@ -1,17 +1,17 @@
 'use client'
-import * as React from 'react';
-import Link from 'next/link';
-import { styled, alpha } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import InputBase from '@mui/material/InputBase';
-import SearchIcon from '@mui/icons-material/Search';
-import { Button } from '@mui/material';
-import { FC, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import * as React from 'react'
+import Link from 'next/link'
+import { styled, alpha } from '@mui/material/styles'
+import AppBar from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import Toolbar from '@mui/material/Toolbar'
+import IconButton from '@mui/material/IconButton'
+import Typography from '@mui/material/Typography'
+import InputBase from '@mui/material/InputBase'
+import SearchIcon from '@mui/icons-material/Search'
+import { Button } from '@mui/material'
+import { FC, useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -26,7 +26,7 @@ const Search = styled('div')(({ theme }) => ({
     marginLeft: theme.spacing(1),
     width: 'auto',
   },
-}));
+}))
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
   padding: theme.spacing(0, 2),
@@ -36,7 +36,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-}));
+}))
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
@@ -52,11 +52,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
       },
     },
   },
-}));
+}))
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgroundColor: theme.palette.error.main,
-}));
+}))
 
 const SearchAppBar: FC = () => {
   const [querySearch, setQuerySearch] = useState<string>('')
@@ -112,7 +112,7 @@ const SearchAppBar: FC = () => {
         </Toolbar>
       </StyledAppBar>
     </Box>
-  );
+  )
 }
 
-export default SearchAppBar;
+export default SearchAppBar

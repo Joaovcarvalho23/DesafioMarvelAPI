@@ -1,12 +1,12 @@
-import { buscarInformacoesPersonagem } from '@/utils/api_marvel';
-import { Box, Container, Grid, Typography, Card, CardMedia } from '@mui/material';
-import { FC } from 'react';
-import { Personagem, PacoteInformacoesDoPersonagem, Comics } from '@/types/marvel_types';
+import { buscarInformacoesPersonagem } from '@/utils/api_marvel'
+import { Box, Container, Grid, Typography, Card, CardMedia } from '@mui/material'
+import { FC } from 'react'
+import { Personagem, PacoteInformacoesDoPersonagem } from '@/types/marvel_types'
 
 interface PaginaPersonagemProps {
   params: {
-    id: string;
-  };
+    id: string
+  }
 }
 
 const styles = {
@@ -38,15 +38,15 @@ const styles = {
     height: '100%',
     borderRadius: 8,
   },
-};
+}
 
 const PaginaPersonagem: FC<PaginaPersonagemProps> = async ({ params }) => {
-  const { id } = params;
+  const { id } = params
 
-  const pacoteInformacoes: PacoteInformacoesDoPersonagem = await buscarInformacoesPersonagem(id);
-  const personagem: Personagem = pacoteInformacoes.results[0];
-  const { name, description, thumbnail, comics } = personagem;
-  const imageUrl = `${thumbnail.path}.${thumbnail.extension}`;
+  const pacoteInformacoes: PacoteInformacoesDoPersonagem = await buscarInformacoesPersonagem(id)
+  const personagem: Personagem = pacoteInformacoes.results[0]
+  const { name, description, thumbnail, comics } = personagem
+  const imageUrl = `${thumbnail.path}.${thumbnail.extension}`
 
   return (
     <div style={{ ...styles.root, backgroundImage: `url(${imageUrl})` }}>
@@ -88,7 +88,7 @@ const PaginaPersonagem: FC<PaginaPersonagemProps> = async ({ params }) => {
         </Grid>
       </Container>
     </div>
-  );
-};
+  )
+}
 
-export default PaginaPersonagem;
+export default PaginaPersonagem

@@ -1,21 +1,21 @@
 // Pagination.tsx
-import { Container } from "@mui/material";
+import { Container } from "@mui/material"
 
-const MAX_ITEMS = 9;
-const CURRENT_ITEM = 1;
-const MAX_LEFT = (MAX_ITEMS - CURRENT_ITEM) / 2;
+const MAX_ITEMS = 9
+const CURRENT_ITEM = 1
+const MAX_LEFT = (MAX_ITEMS - CURRENT_ITEM) / 2
 
 interface PaginationProps {
-  limit: number;
-  total: number;
-  offset: number;
-  setOffset: (offset: number) => void;
+  limit: number
+  total: number
+  offset: number
+  setOffset: (offset: number) => void
 }
 
 export default function Pagination({ limit, total, offset, setOffset }: PaginationProps) {
-  const currentPage = offset ? offset / limit + 1 : 1;
-  const countPages = Math.ceil(total / limit);
-  const firstPage = Math.max(currentPage - MAX_LEFT, 1);
+  const currentPage = offset ? offset / limit + 1 : 1
+  const countPages = Math.ceil(total / limit)
+  const firstPage = Math.max(currentPage - MAX_LEFT, 1)
 
   return (
     <Container>
@@ -34,5 +34,5 @@ export default function Pagination({ limit, total, offset, setOffset }: Paginati
           ))}
       </ul>
     </Container>
-  );
+  )
 }

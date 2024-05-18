@@ -1,32 +1,32 @@
-'use client';
+'use client'
 
-import CardPersonagem from '@/Components/CardPersonagem';
-import { Personagem } from '@/types/marvel_types';
-import { pesquisarPersonagens } from '@/utils/api_marvel';
-import { Grid, Box, CircularProgress, Typography } from '@mui/material';
-import { useSearchParams } from 'next/navigation';
-import { FC, useEffect, useState, Suspense } from 'react';
+import CardPersonagem from '@/Components/CardPersonagem'
+import { Personagem } from '@/types/marvel_types'
+import { pesquisarPersonagens } from '@/utils/api_marvel'
+import { Grid, Box, CircularProgress, Typography } from '@mui/material'
+import { useSearchParams } from 'next/navigation'
+import { FC, useEffect, useState, Suspense } from 'react'
 
 const PaginaPesquisa: FC = () => {
-  const searchParams = useSearchParams();
-  const querySearch = searchParams.get('query');
-  const [personagens, setPersonagens] = useState<Personagem[]>([]);
-  const [carregando, setCarregando] = useState<boolean>(false);
+  const searchParams = useSearchParams()
+  const querySearch = searchParams.get('query')
+  const [personagens, setPersonagens] = useState<Personagem[]>([])
+  const [carregando, setCarregando] = useState<boolean>(false)
 
   useEffect(() => {
     const fetchData = async () => {
-      setCarregando(true);
+      setCarregando(true)
       try {
-        const data = await pesquisarPersonagens(querySearch);
-        setPersonagens(data.results);
+        const data = await pesquisarPersonagens(querySearch)
+        setPersonagens(data.results)
       } catch (error) {
-        console.error(error);
+        console.error(error)
       }
-      setCarregando(false);
-    };
+      setCarregando(false)
+    }
 
-    if (querySearch) fetchData();
-  }, [querySearch]);
+    if (querySearch) fetchData()
+  }, [querySearch])
 
   return (
     <div className='container text-center mt-10' style={{ paddingLeft: '16px', paddingRight: '16px' }}>
@@ -56,15 +56,15 @@ const PaginaPesquisa: FC = () => {
         )
       )}
     </div>
-  );
-};
+  )
+}
 
 const PaginaPesquisaWrapper: FC = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <PaginaPesquisa />
     </Suspense>
-  );
-};
+  )
+}
 
-export default PaginaPesquisaWrapper;
+export default PaginaPesquisaWrapper

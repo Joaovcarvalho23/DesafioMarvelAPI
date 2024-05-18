@@ -1,12 +1,12 @@
 'use client'
-import React from "react";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import React from "react"
+import Typography from "@mui/material/Typography"
+import IconButton from "@mui/material/IconButton"
+import GitHubIcon from '@mui/icons-material/GitHub'
+import LinkedInIcon from '@mui/icons-material/LinkedIn'
 
 const Rodape: React.FC = () => {
-  const anoAtual = new Date().getFullYear();
+  const anoAtual = new Date().getFullYear()
 
   return (
     <footer
@@ -42,7 +42,7 @@ const Rodape: React.FC = () => {
         @ {anoAtual} Todos os direitos reservados
       </Typography>
     </footer>
-  );
-};
+  )
+}
 
-export default Rodape;
+export default Rodape
