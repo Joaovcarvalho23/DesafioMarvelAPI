@@ -6,6 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Personagem } from '@/types/marvel_types';
+import Link from 'next/link';
 
 interface CardPersonagemProps {
     personagem: Personagem
@@ -38,7 +39,9 @@ const CardPersonagem: React.FC<CardPersonagemProps> = ({ personagem }) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Informações do {personagem.name}</Button>
+            <Link href={`informacoes_personagem/${personagem.id}`} passHref>
+                <Button variant="contained" color="warning" size="small">Informações do {personagem.name}</Button>
+            </Link>
             </CardActions>
         </Card>
     );

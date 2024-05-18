@@ -27,4 +27,20 @@ export const buscarTodosPersonagens = async (): Promise<PacoteInformacoesDoPerso
     const url = `${API_BASE_URL}/characters?${consulta}`
     const res = await fetch(url)
     return handleResponse<PacoteInformacoesDoPersonagem>(res);
-} 
+}
+
+
+
+export const buscarInformacoesPersonagem = async (idPersonagem: string): Promise<PacoteInformacoesDoPersonagem> => {
+    const url = `${API_BASE_URL}/characters/${idPersonagem}?${consulta}`
+    const res = await fetch(url)
+    return handleResponse<PacoteInformacoesDoPersonagem>(res);
+}
+
+
+
+export const pesquisarPersonagens = async (querySearch: string | null): Promise<PacoteInformacoesDoPersonagem> => {
+    const url = `${API_BASE_URL}/characters?nameStartsWith=${querySearch}&limit=99&${consulta}`
+    const res = await fetch(url)
+    return handleResponse<PacoteInformacoesDoPersonagem>(res);
+}

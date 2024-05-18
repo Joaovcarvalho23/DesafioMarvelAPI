@@ -22,7 +22,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Rodape />
-        </body>
+      </body>
     </html>
   );
 }
