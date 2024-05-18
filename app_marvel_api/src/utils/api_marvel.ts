@@ -23,7 +23,7 @@ const handleResponse = async <T>(res: Response) => {
     return dados.data as T
 }
 
-export const buscarTodosPersonagens = async (): Promise<PacoteInformacoesDoPersonagem> => {
+export const buscarTodosPersonagens = async (offset: number): Promise<PacoteInformacoesDoPersonagem> => {
     const url = `${API_BASE_URL}/characters?${consulta}`
     const res = await fetch(url)
     return handleResponse<PacoteInformacoesDoPersonagem>(res);

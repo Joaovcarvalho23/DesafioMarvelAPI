@@ -1,10 +1,31 @@
+'use client'
+import { useState, useEffect } from 'react';
 import CardPersonagem from "@/Components/CardPersonagem";
-import { buscarTodosPersonagens } from "@/utils/api_marvel";
+import { buscarTodosPersonagens } from "@/utils/api_marvel"; // Certifique-se de importar corretamente os tipos da sua API
 import { Grid, Container } from "@mui/material";
+import Pagination from '@/Components/Pagination';
+import { PacoteInformacoesDoPersonagem, Personagem } from '@/types/marvel_types';
 
-export default async function Home() {
-  const personagens = await buscarTodosPersonagens();
-  console.log(personagens);
+export default function Home() {
+  const [personagens, setPersonagens] = useState<PacoteInformacoesDoPersonagem | null>(null);
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    async function fetchPersonagens() {
+      try {
+        const result = await buscarTodosPersonagens(offset); // Passa o offset para a função de busca
+        setPersonagens(result);
+      } catch (error) {
+        console.error('Erro ao buscar personagens:', error);
+      }
+    }
+    fetchPersonagens();
+  }, [offset]); // Adiciona offset como dependência para refletir as alterações na paginação
+
+  if (!personagens) {
+    // Caso os dados ainda não tenham sido carregados, retorne um carregador ou uma mensagem de carregamento
+    return <div>Carregando...</div>;
+  }
 
   return (
     <main>
@@ -17,12 +38,20 @@ export default async function Home() {
             </h1>
           </div>
           <Grid container spacing={3} justifyContent="center">
-            {personagens.results.map(personagem => (
-              <Grid item xs={12} sm={6} md={4} lg={3} key={personagem.id}>
+            {personagens.results.map((personagem: Personagem) => (
+              <Grid item xs={9} sm={5} md={4} lg={3} key={personagem.id}>
                 <CardPersonagem personagem={personagem} />
               </Grid>
             ))}
           </Grid>
+          {personagens.total > 0 && (
+            <Pagination
+              limit={personagens.limit}
+              total={personagens.total}
+              offset={offset}
+              setOffset={setOffset}
+            />
+          )}
         </div>
       </Container>
     </main>

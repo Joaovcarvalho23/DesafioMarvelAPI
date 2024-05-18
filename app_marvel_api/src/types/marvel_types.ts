@@ -26,6 +26,8 @@ export interface Thumbnail {
   }
   
   export interface PacoteInformacoesDoPersonagem {
+    limit: number
+    total: number
     results: Personagem[]
   }
   

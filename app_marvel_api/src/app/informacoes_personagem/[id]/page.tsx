@@ -70,10 +70,12 @@ const PaginaPersonagem: FC<PaginaPersonagemProps> = async ({ params }) => {
                 <span style={{ fontWeight: 'bold', textDecoration: 'underline' }}>Nome do personagem:</span> {name}
             </Typography>
 
-              <Typography variant="h6" fontStyle="italic" gutterBottom>
-                Descrição: {description ? description : 'Descrição não disponível'}
+              <Typography variant="h5" fontStyle="italic" gutterBottom>
+                <span style={{ fontWeight: 'bold', textDecoration: 'underline' }}>Descrição:</span> {description ? description : 'Desculpe, sem detalhes sobre este personagem.'}
               </Typography>
-              <Typography variant="h5" gutterBottom>Lista de HQ's:</Typography>
+              <Typography variant="h5" gutterBottom>
+                <span style={{ fontWeight: 'bold', textDecoration: 'underline' }}>Lista de HQ's:</span>
+              </Typography>
               <ul>
                 {comics.items.map((comic, index) => (
                   <li key={index}>
